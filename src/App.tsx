@@ -1,4 +1,3 @@
-import { gsap } from 'gsap';
 import Index from "./components/Index"
 import './App.css';
 

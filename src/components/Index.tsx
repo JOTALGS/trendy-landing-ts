@@ -13,13 +13,11 @@ gsap.registerPlugin(ScrollTrigger);
 const Index: React.FC = () => {
   const firstRef = useRef<HTMLDivElement | null>(null);
   const secondRef = useRef<HTMLHeadingElement | null>(null);
-  const thirdRef = useRef<HTMLDivElement | null>(null);
-  const footRef = useRef<HTMLHeadingElement | null>(null);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context((self) => {
-      const sections = self.selector('section');
+      const sections = self.selector ? self.selector('section') : [];
 
       // Horizontal animation for sections
       const horizontalTween = gsap.to(sections, {

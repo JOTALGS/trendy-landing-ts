@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import './Diagram.css';
 
-const Lines: React.FC<{ lineRef: React.RefObject<HTMLImageElement> }> = ({ lineRefs }) => {
+const Lines: React.FC<{ lineRefs: React.RefObject<HTMLImageElement>[] }> = ({ lineRefs }) => {
   return (
     <div className="mask-container">
       <div ref={lineRefs[0]} style={{ top: '20%', left: '10%' }} className="diagram-linea" ></div>
