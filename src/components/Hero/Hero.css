@@ -1,0 +1,92 @@
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    text-shadow: 0px 0px 10px rgba(41, 122, 228, 0.8);
+    font-family: var(--title-font-family);
+  }
+  
+  .hero-data {
+    margin-top: 2rem;
+  }
+  
+  .hero-data p {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .hero-data span {
+    font-size: 1.25rem;
+    display: block;
+    margin-top: 1rem;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+  }
+  .figures {
+    display: grid; /* Use grid layout */
+    grid-template-rows: auto 1fr; /* Two rows: auto for <p>, flexible for counters */
+    text-align: center; /* Center text in each cell */
+    margin-top: 2rem; /* Space above the figures */
+    color: white;
+    border: 1px solid rgb(65, 64, 64);
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(44, 44, 44, 0.8);
+  }
+  
+  .figures h2 {
+    font-size: 2.2rem; /* Adjust the size of the heading */
+    font-weight: 400;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #ff0000, #ffa500, #94e7ce, #dcedee, #9d9de4, #4b0082, #ee82ee);
+    -webkit-background-clip: text;
+    color: transparent; /* Hide the text color to show gradient fill */
+    -webkit-text-stroke: 2px transparent; /* Base stroke to hide any default borders */
+    font-family: var(--title-font-family);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .figures .counters {
+    display: flex; /* Use flexbox for counters */
+    justify-content: center; /* Space them evenly in the same row */
+    grid-row: 2; /* Place counters in the second row */
+  }
+  
+  .figures .counter {
+    display: flex; /* Flexbox for each counter */
+    flex-direction: column; /* Stack the counter spans vertically */
+    align-items: center; /* Center the spans */
+    margin: 15px;
+    max-width: 200px;
+  }
+  
+  .counters {
+    display: flex;
+    justify-content: space-around; /* Evenly space the counters horizontally */
+    text-align: center;
+  }
+
+  .counter {
+    background-color: #000000;
+    padding: 15px;
+    padding-top: 0px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(41, 41, 41, 0.8);
+    font-family: var(--text-font-family);
+  }
+  
+  .counter span:first-child {
+    font-weight: bolder; /* Bold the number for CountUp */
+    font-size: 2.5rem; /* Make the numbers larger */
+  }
+  
+  .counter span:last-child {
+    font-size: 1.25rem; /* Adjust the size of the descriptive text */
+    font-weight:600;
+  }
+  

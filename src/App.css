@@ -1,0 +1,20 @@
+/* Estilo global */
+:root {
+  --title-font-family: "Roboto Slab", serif; /* Example font for titles */
+  --heading-font-family: "Merriweather", serif; /* Example font for headings */
+  --text-font-family: "Exo 2", serif; /* Example font for normal text */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Evita el desplazamiento horizontal del body */
+  background-color: #161617;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Evita el scroll vertical */
+}
+

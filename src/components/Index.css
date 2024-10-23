@@ -1,0 +1,65 @@
+* {
+    padding:0;
+    margin:0;
+  }
+  .gsap-marker-start, .gsap-marker-end, .gsap-marker-scroller-start, .gsap-marker-scroller-end {
+    opacity: 0 !important; /* Hides the markers visually without breaking */
+    pointer-events: none;  /* Prevents any interaction with markers */
+  }
+  section {
+    width:100vw;
+    height:100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .wrapper {
+    width: 500vw;
+    height: 100vh;
+    display: flex;
+   }
+  
+  body {
+    font-family:sans-serif;
+  }
+  
+  .header {
+    background-color: #161617;
+    position: fixed; /* Fixes the Hero section in place */
+    top: 0;
+    left: 0;
+  }
+
+  .transparent-header {
+    width: 100vw;
+    background-color: transparent;
+  }
+
+  .first {
+  background-color: #161617;
+  }
+  .second {
+  background-color: #161617;
+  }
+  
+  .footer {
+    height: 600px;
+    width: 600px;
+    padding: 40px;    
+    position: absolute;
+    transform: translateX(1350px);
+    text-align: center;
+  }
+
+  .footer h1 {
+    font-family: var(--title-font-family);
+    color: #ffffff;
+    font-size: 40px;
+  }
+  .footer p {
+    font-family: var(--text-font-family);
+    color: #ffffff;
+    font-size: 20px;
+  }
+  

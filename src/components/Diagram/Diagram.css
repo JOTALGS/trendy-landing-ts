@@ -1,0 +1,126 @@
+/* Diagram.css */
+svg {
+    filter: drop-shadow(0 0 10px yellow);
+  }
+
+  .diagram-container {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    text-align: center;
+  }
+
+  .diagram-title {
+    background-image: linear-gradient(51deg, #f70000, #d47f00 76%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0);
+    word-spacing: 0.5rem;
+    font-size: 80px;
+    font-family: var(--title-font-family);
+  }
+
+  .diagram {
+    background-color: transparent;
+  }
+
+  .diagram-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping of child elements */
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(4); /* 4 columns */
+    grid-template-rows: repeat(7, 70px); /* Adjust the row height as needed */
+    gap: 25px; /* Adjust as needed */
+    margin-top: -20px;
+    position: absolute;
+    width: 100%;
+    top: 23%;
+  }
+  
+  .grid-item {
+    background-color: rgba(198, 229, 241, 0.822);
+    padding: 10px;
+    width: 60%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.5s; /* Smooth transition for color change */
+    opacity: 1; /* Start invisible */
+    border-radius: 60px;
+    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 1.2rem;
+    z-index: 2;
+    box-shadow: 0px 0px 15px 6px rgba(147, 149, 241, 0.7);
+    opacity: 0.2;
+    color: rgb(92, 0, 145);
+    font-family: var(--heading-font-family);
+  }
+
+  .col4row1 {
+    background-color: transparent;
+    width: 35%;
+    height: 300%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid rgb(183, 248, 248);
+    border-radius: 360px;
+    transform: translateY(-25px);
+    box-shadow: 0px 0px 15px 6px rgba(147, 149, 241, 0.7);
+    opacity: 0.2;
+  }
+
+  .trendy-logo {
+    width: 80%;
+    transform: translateY(10px);
+  }
+
+  .grid-item-image {
+    width: auto; /* Or specify a fixed width */
+    height: 50px; /* Maintain aspect ratio */
+  }
+
+  .diagram-line {
+    position: absolute;
+    z-index: 0;
+    width: 100px;
+    opacity: 0;
+  }
+
+  .diagram-arrow {
+    position: absolute;
+    z-index: 0;
+    width: 300px;
+    height: 200px;
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+
+  .diagram-10 {
+    position: absolute;
+    z-index: 0;
+    width: 350px;
+    opacity: 0;
+  }
+
+  .diagram-video {
+    display: block;
+    width: 72%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .diagram-linea {
+    position: absolute;
+    z-index: 0;
+    width: 200px;
+    height: 5px;
+    background-color: #0019f7;
+    box-shadow: 0px 0px 15px 6px rgba(0, 4, 255, 0.7);
+    opacity: 0;
+  }
