@@ -1,65 +1,122 @@
 * {
-    padding:0;
-    margin:0;
+  padding:0;
+  margin:0;
+}
+.gsap-marker-start, .gsap-marker-end, .gsap-marker-scroller-start, .gsap-marker-scroller-end {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+section {
+  width:100vw;
+  height:100vh;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 500vw; /* Horizontal layout for large screens */
+  height: 100vh;
+  display: flex;
+}
+
+body {
+  font-family:sans-serif;
+}
+
+.header {
+  background-color: #161617;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.transparent-header {
+  width: 100vw;
+  background-color: transparent;
+}
+
+.first {
+  background-color: #161617;
+}
+.second {
+  background-color: #161617;
+}
+
+.footer {
+  height: 600px;
+  width: 600px;
+  padding: 40px;    
+  position: absolute;
+  transform: translateX(1350px);
+  text-align: center;
+}
+
+.footer h1 {
+  font-family: var(--title-font-family);
+  color: #ffffff;
+  font-size: 40px;
+}
+.footer p {
+  font-family: var(--text-font-family);
+  color: #ffffff;
+  font-size: 20px;
+}
+
+/* Mobile View Styles for screens less than 600px */
+@media (max-width: 600px) {
+  .wrapper {
+    width: 100vw; /* Change this to 100vw */
+    overflow-x: hidden; /* Prevent horizontal overflow */
   }
-  .gsap-marker-start, .gsap-marker-end, .gsap-marker-scroller-start, .gsap-marker-scroller-end {
-    opacity: 0 !important; /* Hides the markers visually without breaking */
-    pointer-events: none;  /* Prevents any interaction with markers */
-  }
+  
   section {
-    width:100vw;
-    height:100vh;
-    display:flex;
+    width: 100vw;
+    height: 100vh; /* Each section fills the viewport */
+    display: flex;
     align-items: center;
     justify-content: center;
   }
-  
-  .wrapper {
-    width: 500vw;
-    height: 100vh;
-    display: flex;
-   }
-  
-  body {
-    font-family:sans-serif;
-  }
-  
-  .header {
-    background-color: #161617;
-    position: fixed; /* Fixes the Hero section in place */
-    top: 0;
-    left: 0;
-  }
 
-  .transparent-header {
+  .header {
     width: 100vw;
-    background-color: transparent;
+    height: 100vh; 
+    position: relative;
   }
 
   .first {
-  background-color: #161617;
+    width: 100vw;
+    height: 500vh; /* Adjust height for mobile */
   }
-  .second {
-  background-color: #161617;
-  }
-  
+
   .footer {
-    height: 600px;
-    width: 600px;
-    padding: 40px;    
-    position: absolute;
-    transform: translateX(1350px);
-    text-align: center;
+    width: 100vw;
+    height: auto;
+    transform: none;
+    padding: 20px;
   }
 
   .footer h1 {
-    font-family: var(--title-font-family);
-    color: #ffffff;
-    font-size: 40px;
+    font-size: 24px; /* Smaller font size */
   }
+
   .footer p {
-    font-family: var(--text-font-family);
-    color: #ffffff;
-    font-size: 20px;
+    font-size: 16px; /* Smaller font size */
   }
-  
+
+  /* Add keyframes for mobile-specific animations */
+  @keyframes fadeInMobile {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  section {
+    animation: fadeInMobile 1s ease-in-out both; /* Apply animation to each section */
+  }
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import './Diagram.css';
 
-const Lines: React.FC<{ lineRefs: React.RefObject<HTMLImageElement>[] }> = ({ lineRefs }) => {
+const Lines: React.FC<{ lineRefs: React.RefObject<HTMLImageElement>[], arrowRefs: React.RefObject<HTMLImageElement>[] }> = ({ lineRefs, arrowRefs }) => {
   return (
     <div className="mask-container">
       <div ref={lineRefs[0]} style={{ top: '20%', left: '10%' }} className="diagram-linea" ></div>
@@ -17,13 +17,13 @@ const Lines: React.FC<{ lineRefs: React.RefObject<HTMLImageElement>[] }> = ({ li
 
       <img ref={lineRefs[8]} style={{ top: '28%', left: '40.5%'}} src='./images/arrow.png' alt="lines" className="diagram-arrow" />
 
-      <img ref={lineRefs[9]} style={{ top: '0%', left: '64%', rotate: '55deg' }} src='./images/10.png' alt="lines" className="diagram-10"/>
-      <img ref={lineRefs[10]} style={{ top: '8%', left: '64%', rotate: '65deg' }} src='./images/10.png' alt="lines" className="diagram-10"/>
-      <img ref={lineRefs[11]} style={{ top: '15%', left: '64%', rotate: '82deg' }} src='./images/8.png' alt="lines" className="diagram-10"/>
-      <img ref={lineRefs[12]} style={{ top: '24%', left: '64%', rotate: '98deg' }} src='./images/8.png' alt="lines" className="diagram-10"/>
-      <img ref={lineRefs[13]} style={{ top: '35%', left: '64%', rotate: '112deg' }} src='./images/10.png' alt="lines" className="diagram-10"/>
-      <img ref={lineRefs[14]} style={{ top: '44%', left: '64%', rotate: '122deg' }} src='./images/11.png' alt="lines" className="diagram-10"/>
-      <img ref={lineRefs[15]} style={{ top: '50%', left: '64%', rotate: '130deg' }} src='./images/12.png' alt="lines" className="diagram-10"/>
+      <img ref={arrowRefs[0]} style={{ top: '0%', left: '64%', rotate: '55deg' }} src='./images/10.png' alt="lines" className="diagram-10"/>
+      <img ref={arrowRefs[1]} style={{ top: '8%', left: '64%', rotate: '65deg' }} src='./images/10.png' alt="lines" className="diagram-10"/>
+      <img ref={arrowRefs[2]} style={{ top: '15%', left: '64%', rotate: '82deg' }} src='./images/8.png' alt="lines" className="diagram-10"/>
+      <img ref={arrowRefs[3]} style={{ top: '24%', left: '64%', rotate: '98deg' }} src='./images/8.png' alt="lines" className="diagram-10"/>
+      <img ref={arrowRefs[4]} style={{ top: '35%', left: '64%', rotate: '112deg' }} src='./images/10.png' alt="lines" className="diagram-10"/>
+      <img ref={arrowRefs[5]} style={{ top: '44%', left: '64%', rotate: '122deg' }} src='./images/11.png' alt="lines" className="diagram-10"/>
+      <img ref={arrowRefs[6]} style={{ top: '50%', left: '64%', rotate: '130deg' }} src='./images/12.png' alt="lines" className="diagram-10"/>
     </div>
   );
 };
@@ -32,7 +32,8 @@ const Diagram: React.FC = () => {
   const gridInputRef = useRef<(HTMLDivElement | null)[]>([]); // Ref for input logos
   const gridOutputRef = useRef<(HTMLDivElement | null)[]>([]); // Ref for output names
   const iconRef = useRef<(HTMLDivElement | null)>(null); // Ref for output names
-  const lineRefs = Array.from({ length: 16 }, () => useRef<HTMLImageElement | null>(null)); // Create refs for lines
+  const lineRefs = Array.from({ length: 9 }, () => useRef<HTMLImageElement | null>(null)); // Create refs for lines
+  const arrowRefs = Array.from({ length: 7 }, () => useRef<HTMLImageElement | null>(null)); // Create refs for lines
   const [startAnimationY, setStartAnimationY] = useState<number>(0);
   const [endAnimationY, setEndAnimationY] = useState<number>(0);
   const lineOffset = 150; // Adjusted offset for lines
@@ -94,7 +95,33 @@ const Diagram: React.FC = () => {
           gsap.to(ref.current, {
             x: 0,
             opacity: 0.8,
-            duration: 1.8,
+            duration: 0.4,
+            ease: 'power1.out',
+            overwrite: 'auto',
+          });
+        }
+      });
+      arrowRefs.forEach((ref, index) => {
+        const rowIndex = index; // Use row index for output
+        const offsetStart = startAnimationY+1400 + rowIndex * lineOffset; // Apply the offset based on the row index
+        const offsetEnd = endAnimationY+1400 + rowIndex * lineOffset;
+  
+        if (scrollY >= offsetStart && scrollY <= offsetEnd) {
+          const progress = (scrollY - offsetStart) / (offsetEnd - offsetStart);
+          if (ref.current) {
+            gsap.to(ref.current, {
+              opacity: Math.max(0, progress), // Gradually increase opacity
+              duration: 0.4,
+              ease: 'power1.out',
+              overwrite: 'auto',
+              delay: 1.5,
+            });
+          }
+        } else if (scrollY > offsetEnd && ref.current) {
+          gsap.to(ref.current, {
+            x: 0,
+            opacity: 0.8,
+            duration: 0.4,
             ease: 'power1.out',
             overwrite: 'auto',
           });
@@ -204,7 +231,7 @@ const Diagram: React.FC = () => {
       <div className="diagram">
 
         <div className="grid-container">
-          <Lines lineRefs={lineRefs} /> {/* Pass the refs to Lines component */}
+          <Lines lineRefs={lineRefs} arrowRefs={arrowRefs} /> {/* Pass the refs to Lines component */}
           {/* First three columns with input logos */}
           {inputNames.map((src, index) => (
             <div
