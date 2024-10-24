@@ -91,3 +91,30 @@
     transition: opacity 0.5s ease-in-out;
     display: inline-block;
   }
+
+  @media (max-width: 600px) {
+    .team-container {
+      background-color: transparent;
+    }
+    .team-title {
+      display: none;
+    }
+    .team-members {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .team-member-card {
+      width: 100vw;
+      height: 70vh;
+      opacity: 1;
+      border-right: none;
+    }
+    .call-to-action-text {
+      position: absolute;
+      bottom: -200%;
+      font-size: 25px;
+      left: 0;
+    }
+  
+  }

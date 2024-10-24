@@ -90,3 +90,41 @@
 .industry-box:hover .icon-container img {
   opacity: 1; /* Show the image on hover */
 }
+
+@media (max-width: 600px) {
+  .industries-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .industries-title {
+    font-size: 50px;
+    position: absolute;
+    top: 0%;
+    left: 5%;
+  }
+  .title-container>svg{
+    width: 150px;
+  }
+  .industries-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 150px);
+    gap: 20px;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    height: 80%;
+  }
+  .industry-box {
+    width: 100%;
+    height: 150px;
+  }
+  .industry-box:hover > p {
+    transform: translateY(-70px); /* Moves the text up by 10px on hover */
+  }
+  .icon-container img {
+    transform: translateY(45px);
+  }
+}

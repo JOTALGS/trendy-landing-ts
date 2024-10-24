@@ -80,29 +80,41 @@ body {
 
   .header {
     width: 100vw;
+    margin-left: 0px;
     height: 100vh; 
-    position: relative;
+    position: absolute;
+    top: 0%;
+    left: 0%;
   }
 
   .first {
     width: 100vw;
-    height: 500vh; /* Adjust height for mobile */
+    height: 100vh;
+    position: absolute;
+    top: 100vh;
   }
 
-  .footer {
+  .second {
     width: 100vw;
-    height: auto;
-    transform: none;
-    padding: 20px;
+    height: 100vh;
+    position: absolute;
+    top: 400vh;
   }
 
-  .footer h1 {
-    font-size: 24px; /* Smaller font size */
+  .third {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 700vh;
   }
 
-  .footer p {
-    font-size: 16px; /* Smaller font size */
+  .foot{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 1100vh;
   }
+
 
   /* Add keyframes for mobile-specific animations */
   @keyframes fadeInMobile {

@@ -83,9 +83,24 @@
   }
   
   @media (max-width: 768px) {
+    .title-uc-container {
+      position: relative;
+    }
+    .use-cases-title {
+      font-size: 50px;
+      position: absolute;
+      top: -100%;
+      left: -15%;
+    }
+    .title-uc-container>svg{
+      width: 300px;
+      margin-top: -20px;
+    }
     .use-cases-container {
       flex-direction: column;
       align-items: center;
     }
+    .use-case-card {
+      position: relative;
   }
-  
+}

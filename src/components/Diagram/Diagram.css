@@ -124,3 +124,33 @@ svg {
     box-shadow: 0px 0px 15px 6px rgba(0, 4, 255, 0.7);
     opacity: 0;
   }
+
+  /* Mobile View Styles for screens less than 600px */
+@media (max-width: 600px) {
+  .diagram-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping of child elements */
+  }
+  .diagram-title {
+    font-size: 2.5rem;
+  }
+  .diagram-container>svg {
+    width: 200px;
+  }
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  .grid-item {
+    opacity: 1;
+  }
+  .col4row1 {
+    opacity: 1;
+    transform: translateY(0px);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 140px;
+  }
+}

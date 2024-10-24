@@ -41,10 +41,12 @@ const useCases: UseCase[] = [
     image: './images/automation.png'
   },
 ];
+
 const UseCases: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [startAnimationY, setStartAnimationY] = useState<number>(0);
   const [endAnimationY, setEndAnimationY] = useState<number>(0);
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 680); // New state to detect screen size
   const memberOffset = 200;
   const memberRefs = useRef<(HTMLDivElement | null)[]>([]); // Ref array for use case cards
   const [randomTranslateYValues, setRandomTranslateYValues] = useState<number[]>([]);
@@ -56,7 +58,7 @@ const UseCases: React.FC = () => {
   const handleMouseLeave = () => {
     setHoveredIndex(null);
   };
-  
+
   useEffect(() => {
     // Generate random translateY values for each use-case card
     const randomValues = useCases.map(() =>
@@ -85,6 +87,19 @@ const UseCases: React.FC = () => {
     };
   }, []);
 
+  // Effect to handle window resizing and updating isMobile
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 680);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -95,7 +110,8 @@ const UseCases: React.FC = () => {
 
         if (scrollY >= offsetStart && scrollY <= offsetEnd) {
           const progress = (scrollY - offsetStart) / (offsetEnd - offsetStart);
-          if (ref) {
+          if (ref && !isMobile) {
+            // Apply GSAP animation only if not on mobile
             gsap.to(ref, {
               x: (1 - progress) * + 2000,
               opacity: Math.max(0, progress),
@@ -104,7 +120,7 @@ const UseCases: React.FC = () => {
               overwrite: 'auto',
             });
           }
-        } else if (scrollY > offsetEnd && ref) {
+        } else if (scrollY > offsetEnd && ref && !isMobile) {
           const progress = (scrollY - offsetStart) / (offsetEnd - offsetStart);
           gsap.to(ref, {
             x: (1 - progress) * + 1000,
@@ -122,7 +138,7 @@ const UseCases: React.FC = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [startAnimationY, endAnimationY]);
+  }, [startAnimationY, endAnimationY, isMobile]);
 
   return (
     <div className="use-cases-container">
@@ -146,7 +162,8 @@ const UseCases: React.FC = () => {
           ref={(el) => (memberRefs.current[index] = el)} // Attach ref to each use-case-card
           onMouseEnter={() => handleMouseEnter(index)}
           onMouseLeave={handleMouseLeave}
-          style={{ transform: `translateY(${randomTranslateYValues[index]}px)` }} // Apply random translateY
+          // Conditionally apply translateY only if not on mobile
+          style={{ transform: isMobile ? 'none' : `translateY(${randomTranslateYValues[index]}px)` }}
         >
           <div className="icon-title">
             <div className="icon-container">{useCase.icon}</div>

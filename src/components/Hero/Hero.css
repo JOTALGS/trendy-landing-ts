@@ -90,3 +90,39 @@
     font-weight:600;
   }
   
+/* Mobile View Styles for screens less than 600px */
+@media (max-width: 600px) {
+  .hero-text {
+    text-align: center;
+  }
+  .hero-text h1 {
+    font-size: 2rem;
+    padding: 20px;
+  }
+
+  .figures {
+    width: 80%;
+    text-align: center;
+    align-content: center;
+  }
+  .figures h2 {
+    font-size: 1.25rem;
+  }
+  .counters {
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  .counter {
+    max-width: 100px;
+  }
+  .counter span:first-child {
+    font-size: 1rem;
+  }
+  .counter span:last-child {
+    font-size: 0.75rem; /* Adjust the size of the descriptive text */
+    font-weight:600;
+  }
+
+}
